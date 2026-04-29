@@ -2,7 +2,7 @@
 // DADOS DO CARDÁPIO - Edite aqui os produtos e preços
 // ============================================================
 
-const WHATSAPP_NUMBER = "5599984156673"; // Número com código do país
+const WHATSAPP_NUMBER = "5599984158874"; // Número com código do país
 
 const MENU_DATA = {
 
