@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pastelaria e Açaíteria LB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <div class="logo-badge">LB</div>
+        <div class="logo-text">
+          <span class="logo-title">Pastelaria</span>
+          <span class="logo-sub">e Açaíteria</span>
+        </div>
+      </div>
+      <button class="cart-btn" id="cartToggle" aria-label="Abrir carrinho">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+    <!-- CATEGORY NAV -->
+    <nav class="cat-nav" id="catNav">
+      <button class="cat-btn active" data-cat="all">Tudo</button>
+      <button class="cat-btn" data-cat="pasteis-tradicionais">Pastéis Trad.</button>
+      <button class="cat-btn" data-cat="pasteis-especiais">Especiais</button>
+      <button class="cat-btn" data-cat="pasteis-duplos">E. Duplos</button>
+      <button class="cat-btn" data-cat="acai-potes">Açaí Potes</button>
+      <button class="cat-btn" data-cat="acai-tigelas">Açaí Tigelas</button>
+      <button class="cat-btn" data-cat="lanches">Lanches</button>
+      <button class="cat-btn" data-cat="doces">Doces</button>
+      <button class="cat-btn" data-cat="vitaminas">Vitaminas</button>
+      <button class="cat-btn" data-cat="sucos">Sucos</button>
+      <button class="cat-btn" data-cat="refrigerantes">Refrigerantes</button>
+    </nav>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="hero">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-content">
+      <p class="hero-tag">🍇 Feito com amor</p>
+      <h1 class="hero-title">O melhor açaí<br>da cidade!</h1>
+      <p class="hero-desc">Monte seu pedido e receba via WhatsApp 🚀</p>
+    </div>
+  </section>
+
+  <!-- MENU SECTIONS -->
+  <main class="menu" id="menu">
+
+    <!-- SECTION: Pastéis Tradicionais -->
+    <section class="menu-section" data-section="pasteis-tradicionais">
+      <h2 class="section-title"><span class="section-emoji">🥟</span>Pastéis Tradicionais</h2>
+      <div class="product-grid" id="grid-pasteis-tradicionais"></div>
+    </section>
+
+    <!-- SECTION: Pastéis Especiais -->
+    <section class="menu-section" data-section="pasteis-especiais">
+      <h2 class="section-title"><span class="section-emoji">⭐</span>Pastéis Especiais</h2>
+      <div class="product-grid" id="grid-pasteis-especiais"></div>
+    </section>
+
+    <!-- SECTION: Especiais Duplos -->
+    <section class="menu-section" data-section="pasteis-duplos">
+      <h2 class="section-title"><span class="section-emoji">🔥</span>Especiais Duplos</h2>
+      <div class="product-grid" id="grid-pasteis-duplos"></div>
+    </section>
+
+    <!-- SECTION: Açaí Potes -->
+    <section class="menu-section" data-section="acai-potes">
+      <h2 class="section-title"><span class="section-emoji">🍇</span>Açaí em Potes</h2>
+      <p class="section-note">Acompanha 3 complementos grátis + 1 cobertura grátis</p>
+      <div class="product-grid" id="grid-acai-potes"></div>
+    </section>
+
+    <!-- SECTION: Açaí Tigelas -->
+    <section class="menu-section" data-section="acai-tigelas">
+      <h2 class="section-title"><span class="section-emoji">🥣</span>Açaí em Tigelas</h2>
+      <p class="section-note">Acompanha 3 complementos grátis + 1 cobertura grátis</p>
+      <div class="product-grid" id="grid-acai-tigelas"></div>
+    </section>
+
+    <!-- SECTION: Lanches -->
+    <section class="menu-section" data-section="lanches">
+      <h2 class="section-title"><span class="section-emoji">🍟</span>Lanches</h2>
+      <div class="product-grid" id="grid-lanches"></div>
+    </section>
+
+    <!-- SECTION: Doces -->
+    <section class="menu-section" data-section="doces">
+      <h2 class="section-title"><span class="section-emoji">🍫</span>Doces</h2>
+      <div class="product-grid" id="grid-doces"></div>
+    </section>
+
+    <!-- SECTION: Vitaminas -->
+    <section class="menu-section" data-section="vitaminas">
+      <h2 class="section-title"><span class="section-emoji">🥤</span>Vitaminas</h2>
+      <div class="product-grid" id="grid-vitaminas"></div>
+    </section>
+
+    <!-- SECTION: Sucos -->
+    <section class="menu-section" data-section="sucos">
+      <h2 class="section-title"><span class="section-emoji">🍹</span>Sucos</h2>
+      <div class="product-grid" id="grid-sucos"></div>
+    </section>
+
+    <!-- SECTION: Refrigerantes -->
+    <section class="menu-section" data-section="refrigerantes">
+      <h2 class="section-title"><span class="section-emoji">🥤</span>Refrigerantes</h2>
+      <div class="product-grid" id="grid-refrigerantes"></div>
+    </section>
+
+  </main>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>🛒 Meu Pedido</h2>
+      <button class="cart-close" id="cartClose">✕</button>
+    </div>
+
+    <!-- Customer Info -->
+    <div class="customer-info">
+      <input type="text" id="customerName" placeholder="👤 Seu nome" maxlength="50" />
+      <input type="text" id="customerAddress" placeholder="📍 Endereço (opcional)" maxlength="100" />
+      <textarea id="customerObs" placeholder="📝 Observações do pedido (opcional)" rows="2" maxlength="200"></textarea>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <div class="empty-icon">🍇</div>
+        <p>Seu carrinho está vazio</p>
+        <span>Adicione itens do cardápio!</span>
+      </div>
+    </div>
+
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">R$ 0,00</strong>
+      </div>
+      <button class="btn-whatsapp" id="btnWhatsapp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.522 5.847L.057 23.492a.5.5 0 0 0 .599.61l5.812-1.524A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 0 1-5.028-1.384l-.36-.214-3.732.978.996-3.645-.234-.374A9.817 9.817 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        Finalizar pelo WhatsApp
+      </button>
+      <button class="btn-clear" id="btnClear">🗑️ Limpar carrinho</button>
+    </div>
+  </aside>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a class="fab-whatsapp" href="https://wa.me/5599984156673" target="_blank" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.522 5.847L.057 23.492a.5.5 0 0 0 .599.61l5.812-1.524A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 0 1-5.028-1.384l-.36-.214-3.732.978.996-3.645-.234-.374A9.817 9.817 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+    <span class="fab-pulse"></span>
+  </a>
+
+  <script src="/js/data.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
