@@ -6,6 +6,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
+  --red-header: #FD1D1D;
   --purple:     #4B1994;
   --purple-dk:  #2D0D6B;
   --purple-md:  #6C30B5;
@@ -42,7 +43,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 200;
-  background: var(--purple);
+  background: var(--red-header);
   box-shadow: 0 2px 20px rgba(0,0,0,0.25);
 }
 
@@ -70,7 +71,7 @@ body {
   font-family: 'Baloo 2', sans-serif;
   font-weight: 800;
   font-size: 1.4rem;
-  color: var(--purple-dk);
+  color: var(--red-header);
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
@@ -134,7 +135,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--purple);
+  border: 2px solid var(--red-header);
 }
 
 /* Category Nav */
@@ -173,7 +174,7 @@ body {
 
 /* ---------- HERO ---------- */
 .hero {
-  background: linear-gradient(135deg, var(--purple-dk) 0%, var(--purple-md) 60%, var(--purple) 100%);
+  background: linear-gradient(90deg,rgba(253, 29, 29, 1) 42%, rgba(252, 176, 69, 1) 100%);
   padding: 36px 20px 44px;
   position: relative;
   overflow: hidden;
@@ -460,7 +461,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 18px 18px 14px;
-  background: var(--purple);
+  background: var(--red-header);
   color: white;
 }
 

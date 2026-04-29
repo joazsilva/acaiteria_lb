@@ -8,6 +8,390 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== LOGO IMAGE ===== */
+    .logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+    }
+
+    /* ===== PROMOÇÕES ===== */
+    #promo-section {
+      display: none;
+      padding: 20px 12px 32px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    #promo-section.active { display: block; }
+
+    .promo-day-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 800;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 20px;
+      padding: 3px 10px;
+      margin-bottom: 10px;
+    }
+
+    .promo-card {
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.13);
+      animation: fadeUp 0.4s ease both;
+    }
+
+    /* Segunda — Entrega grátis */
+    .promo-card.segunda {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      border: 1.5px solid rgba(255,255,255,0.08);
+    }
+    .promo-card.segunda .promo-day-badge {
+      background: rgba(99,179,237,0.18);
+      color: #63b3ed;
+      border: 1px solid rgba(99,179,237,0.3);
+    }
+    .promo-card.segunda .promo-title {
+      color: #fff;
+    }
+    .promo-card.segunda .promo-subtitle {
+      color: rgba(255,255,255,0.65);
+    }
+    .promo-card.segunda .bairro-tag {
+      background: rgba(99,179,237,0.15);
+      color: #90cdf4;
+      border: 1px solid rgba(99,179,237,0.25);
+    }
+
+    /* Terça — Desconto */
+    .promo-card.terca {
+      background: linear-gradient(135deg, #7b2d00 0%, #9c3a00 50%, #c05621 100%);
+      border: 1.5px solid rgba(255,200,100,0.15);
+    }
+    .promo-card.terca .promo-day-badge {
+      background: rgba(246,173,85,0.2);
+      color: #f6ad55;
+      border: 1px solid rgba(246,173,85,0.35);
+    }
+    .promo-card.terca .promo-title { color: #fff; }
+    .promo-card.terca .promo-subtitle { color: rgba(255,255,255,0.7); }
+
+    /* Quinta — Maluca */
+    .promo-card.quinta {
+      background: linear-gradient(135deg, #1a0533 0%, #2d1b69 50%, #553c9a 100%);
+      border: 1.5px solid rgba(178,132,255,0.2);
+    }
+    .promo-card.quinta .promo-day-badge {
+      background: rgba(178,132,255,0.2);
+      color: #d6bcfa;
+      border: 1px solid rgba(178,132,255,0.35);
+    }
+    .promo-card.quinta .promo-title { color: #fff; }
+    .promo-card.quinta .promo-subtitle { color: rgba(255,255,255,0.7); }
+
+    /* Sexta — Açaí */
+    .promo-card.sexta {
+      background: linear-gradient(135deg, #1a0a2e 0%, #2d0a4e 50%, #6b21a8 100%);
+      border: 1.5px solid rgba(167,139,250,0.2);
+    }
+    .promo-card.sexta .promo-day-badge {
+      background: rgba(167,139,250,0.2);
+      color: #c4b5fd;
+      border: 1px solid rgba(167,139,250,0.35);
+    }
+    .promo-card.sexta .promo-title { color: #fff; }
+    .promo-card.sexta .promo-subtitle { color: rgba(255,255,255,0.7); }
+
+    /* Brinde row */
+    .promo-acai-brinde {
+      position: relative;
+      z-index: 1;
+    }
+    .brinde-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(167,139,250,0.25);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+    .brinde-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .brinde-arrow {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #F7B731;
+      flex-shrink: 0;
+    }
+    .brinde-info { display: flex; flex-direction: column; flex: 1; }
+    .brinde-label { font-weight: 800; font-size: 0.88rem; color: #fff; }
+    .brinde-sublabel { font-size: 0.72rem; font-weight: 700; color: rgba(255,255,255,0.55); }
+    .brinde-note {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 8px 12px;
+      border-left: 3px solid rgba(167,139,250,0.5);
+    }
+
+    /* Quarta — Folga */
+    .promo-card.quarta {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+      border: 1.5px solid rgba(255,255,255,0.06);
+    }
+    .promo-card.quarta .promo-day-badge {
+      background: rgba(160,174,192,0.15);
+      color: #a0aec0;
+      border: 1px solid rgba(160,174,192,0.2);
+    }
+    .promo-card.quarta .promo-title { color: #e2e8f0; }
+    .promo-card.quarta .promo-subtitle { color: #718096; }
+
+    .promo-card-deco {
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      font-size: 7rem;
+      opacity: 0.07;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .promo-title {
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .promo-subtitle {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+      line-height: 1.45;
+    }
+
+    /* Bairros grid */
+    .bairros-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bairro-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 10px;
+      padding: 4px 10px;
+    }
+
+    /* Promo price highlight */
+    .promo-price-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .promo-price-old {
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.4);
+      text-decoration: line-through;
+    }
+
+    .promo-price-new {
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: #F7B731;
+      text-shadow: 0 2px 10px rgba(247,183,49,0.4);
+    }
+
+    .promo-size-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: rgba(247,183,49,0.15);
+      color: #F7B731;
+      border: 1px solid rgba(247,183,49,0.3);
+      border-radius: 8px;
+      padding: 3px 8px;
+    }
+
+    /* Promo items (pastéis com botão add) */
+    .promo-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .promo-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 10px 14px;
+      gap: 10px;
+    }
+
+    .promo-item-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .promo-item-emoji { font-size: 1.4rem; flex-shrink: 0; }
+
+    .promo-item-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .promo-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .promo-qty-control {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 3px;
+    }
+
+    .promo-btn-add {
+      background: linear-gradient(135deg, #F7B731, #E0960A);
+      color: #1a1a1a;
+      border: none;
+      border-radius: 14px;
+      padding: 6px 12px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .promo-btn-add:active { transform: scale(0.92); }
+    .promo-btn-add.hidden { display: none; }
+
+    .promo-qty-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(247,183,49,0.8);
+      color: #1a1a1a;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .promo-qty-btn.minus { background: rgba(255,255,255,0.2); color: white; }
+    .promo-qty-btn:active { transform: scale(0.88); }
+
+    .promo-qty-num {
+      font-weight: 800;
+      font-size: 0.9rem;
+      min-width: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    /* TODAY highlight */
+    .promo-card.today-promo {
+      box-shadow: 0 0 0 3px #F7B731, 0 8px 40px rgba(247,183,49,0.25);
+    }
+
+    .today-label {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: #F7B731;
+      color: #1a1a1a;
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 800;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-radius: 8px;
+      padding: 3px 8px;
+      z-index: 2;
+      animation: pulse-today 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-today {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.04); }
+    }
+
+    .folga-emoji {
+      font-size: 3.5rem;
+      text-align: center;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* Promo header section */
+    .promo-header-section {
+      padding: 16px 0 4px;
+      margin-bottom: 4px;
+    }
+
+    .promo-section-title {
+      font-family: 'Baloo 2', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--purple);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--gray-light);
+      margin-bottom: 14px;
+    }
+  </style>
 </head>
 <body>
 
@@ -15,11 +399,7 @@
   <header class="header">
     <div class="header-inner">
       <div class="logo-area">
-        <div class="logo-badge">LB</div>
-        <div class="logo-text">
-          <span class="logo-title">Pastelaria</span>
-          <span class="logo-sub">e Açaíteria</span>
-        </div>
+        <img class="logo-img" src="/assets/logo-lb.png" alt="Pastelaria e Açaíteria LB" />
       </div>
       <button class="cart-btn" id="cartToggle" aria-label="Abrir carrinho">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
@@ -28,7 +408,7 @@
     </div>
     <!-- CATEGORY NAV -->
     <nav class="cat-nav" id="catNav">
-      <button class="cat-btn active" data-cat="all">Tudo</button>
+      <button class="cat-btn active" data-cat="promocoes">🏷️ Promoções</button>
       <button class="cat-btn" data-cat="pasteis-tradicionais">Pastéis Trad.</button>
       <button class="cat-btn" data-cat="pasteis-especiais">Especiais</button>
       <button class="cat-btn" data-cat="pasteis-duplos">E. Duplos</button>
@@ -47,72 +427,146 @@
     <div class="hero-blob hero-blob-1"></div>
     <div class="hero-blob hero-blob-2"></div>
     <div class="hero-content">
-      <p class="hero-tag">🍇 Feito com amor</p>
-      <h1 class="hero-title">O melhor açaí<br>da cidade!</h1>
-      <p class="hero-desc">Monte seu pedido e receba via WhatsApp 🚀</p>
+      <p class="hero-tag">🥟 Feito com amor</p>
+      <h1 class="hero-title">O melhor pastelão<br>da cidade!</h1>
+      <p class="hero-desc">Monte seu pedido e envie via WhatsApp 🚀</p>
     </div>
   </section>
 
-  <!-- MENU SECTIONS -->
-  <main class="menu" id="menu">
+  <!-- PROMOÇÕES SECTION -->
+  <div id="promo-section" class="active">
+    <div class="promo-header-section">
+      <h2 class="promo-section-title">🏷️ Promoções da Semana</h2>
+    </div>
 
-    <!-- SECTION: Pastéis Tradicionais -->
+    <!-- SEGUNDA: Entrega Grátis -->
+    <div class="promo-card segunda" id="promo-segunda">
+      <span class="promo-card-deco">🛵</span>
+      <div class="promo-day-badge">Segunda-feira</div>
+      <p class="promo-title">🛵 Entrega Grátis!</p>
+      <p class="promo-subtitle">Todo dia de segunda-feira, entregamos sem taxa nos bairros:</p>
+      <div class="bairros-grid">
+        <span class="bairro-tag">📍 Santa Inês</span>
+        <span class="bairro-tag">📍 Santa Rita</span>
+        <span class="bairro-tag">📍 Pôr do Sol</span>
+        <span class="bairro-tag">📍 Sol Nascente</span>
+        <span class="bairro-tag">📍 Novo Horizonte</span>
+        <span class="bairro-tag">📍 Parque Tocantins</span>
+      </div>
+    </div>
+
+    <!-- TERÇA: Pastel R$17 -->
+    <div class="promo-card terca" id="promo-terca">
+      <span class="promo-card-deco">🥟</span>
+      <div class="promo-day-badge">Terça-feira</div>
+      <p class="promo-title">🔥 Pastel Gigante na Promoção!</p>
+      <p class="promo-subtitle">Pastel de 30cm por um preço incrível:</p>
+      <div class="promo-price-row">
+        <span class="promo-price-old">R$ 20,00</span>
+        <span class="promo-price-new">R$ 17,00</span>
+        <span class="promo-size-badge">📏 30 cm</span>
+      </div>
+      <div class="promo-items" id="promo-terca-items">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- QUARTA: Folga -->
+    <div class="promo-card quarta" id="promo-quarta">
+      <span class="promo-card-deco">😴</span>
+      <div class="promo-day-badge">Quarta-feira</div>
+      <span class="folga-emoji">😴</span>
+      <p class="promo-title" style="text-align:center">Hoje é dia de descanso!</p>
+      <p class="promo-subtitle" style="text-align:center">Na quarta-feira a LB tira uma folga bem merecida.<br>Voltamos com tudo na quinta! 💪</p>
+    </div>
+
+    <!-- QUINTA: Maluca -->
+    <div class="promo-card quinta" id="promo-quinta">
+      <span class="promo-card-deco">🤪</span>
+      <div class="promo-day-badge">Quinta Maluca 🤪</div>
+      <p class="promo-title">⚡ Quinta Maluca!</p>
+      <p class="promo-subtitle">Preços especiais só às quintas — aproveite!</p>
+      <div class="promo-items" id="promo-quinta-items">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- SEXTA: Açaí -->
+    <div class="promo-card sexta" id="promo-sexta">
+      <span class="promo-card-deco">🍇</span>
+      <div class="promo-day-badge">Sexta-feira</div>
+      <p class="promo-title">🍇 Sexta do Açaí!</p>
+      <p class="promo-subtitle">Na compra de 2 potes de 480ml, você leva 1 pote de 200ml de brinde — de graça! 🎁</p>
+      <div class="promo-acai-brinde">
+        <div class="brinde-row">
+          <span class="brinde-icon">🫙</span>
+          <div class="brinde-info">
+            <span class="brinde-label">2× Açaí 480ml</span>
+            <span class="brinde-sublabel">Potes selecionados</span>
+          </div>
+          <span class="brinde-arrow">+</span>
+          <span class="brinde-icon">🎁</span>
+          <div class="brinde-info">
+            <span class="brinde-label">1× Açaí 200ml</span>
+            <span class="brinde-sublabel" style="color:#86efac">GRÁTIS</span>
+          </div>
+        </div>
+        <p class="brinde-note">📲 Informe a promoção ao finalizar seu pedido no WhatsApp!</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MENU SECTIONS -->
+  <main class="menu" id="menu" style="display:none">
+
     <section class="menu-section" data-section="pasteis-tradicionais">
       <h2 class="section-title"><span class="section-emoji">🥟</span>Pastéis Tradicionais</h2>
       <div class="product-grid" id="grid-pasteis-tradicionais"></div>
     </section>
 
-    <!-- SECTION: Pastéis Especiais -->
     <section class="menu-section" data-section="pasteis-especiais">
       <h2 class="section-title"><span class="section-emoji">⭐</span>Pastéis Especiais</h2>
       <div class="product-grid" id="grid-pasteis-especiais"></div>
     </section>
 
-    <!-- SECTION: Especiais Duplos -->
     <section class="menu-section" data-section="pasteis-duplos">
       <h2 class="section-title"><span class="section-emoji">🔥</span>Especiais Duplos</h2>
       <div class="product-grid" id="grid-pasteis-duplos"></div>
     </section>
 
-    <!-- SECTION: Açaí Potes -->
     <section class="menu-section" data-section="acai-potes">
       <h2 class="section-title"><span class="section-emoji">🍇</span>Açaí em Potes</h2>
       <p class="section-note">Acompanha 3 complementos grátis + 1 cobertura grátis</p>
       <div class="product-grid" id="grid-acai-potes"></div>
     </section>
 
-    <!-- SECTION: Açaí Tigelas -->
     <section class="menu-section" data-section="acai-tigelas">
       <h2 class="section-title"><span class="section-emoji">🥣</span>Açaí em Tigelas</h2>
       <p class="section-note">Acompanha 3 complementos grátis + 1 cobertura grátis</p>
       <div class="product-grid" id="grid-acai-tigelas"></div>
     </section>
 
-    <!-- SECTION: Lanches -->
     <section class="menu-section" data-section="lanches">
       <h2 class="section-title"><span class="section-emoji">🍟</span>Lanches</h2>
       <div class="product-grid" id="grid-lanches"></div>
     </section>
 
-    <!-- SECTION: Doces -->
     <section class="menu-section" data-section="doces">
       <h2 class="section-title"><span class="section-emoji">🍫</span>Doces</h2>
       <div class="product-grid" id="grid-doces"></div>
     </section>
 
-    <!-- SECTION: Vitaminas -->
     <section class="menu-section" data-section="vitaminas">
       <h2 class="section-title"><span class="section-emoji">🥤</span>Vitaminas</h2>
       <div class="product-grid" id="grid-vitaminas"></div>
     </section>
 
-    <!-- SECTION: Sucos -->
     <section class="menu-section" data-section="sucos">
       <h2 class="section-title"><span class="section-emoji">🍹</span>Sucos</h2>
       <div class="product-grid" id="grid-sucos"></div>
     </section>
 
-    <!-- SECTION: Refrigerantes -->
     <section class="menu-section" data-section="refrigerantes">
       <h2 class="section-title"><span class="section-emoji">🥤</span>Refrigerantes</h2>
       <div class="product-grid" id="grid-refrigerantes"></div>
@@ -127,14 +581,11 @@
       <h2>🛒 Meu Pedido</h2>
       <button class="cart-close" id="cartClose">✕</button>
     </div>
-
-    <!-- Customer Info -->
     <div class="customer-info">
       <input type="text" id="customerName" placeholder="👤 Seu nome" maxlength="50" />
       <input type="text" id="customerAddress" placeholder="📍 Endereço (opcional)" maxlength="100" />
       <textarea id="customerObs" placeholder="📝 Observações do pedido (opcional)" rows="2" maxlength="200"></textarea>
     </div>
-
     <div class="cart-items" id="cartItems">
       <div class="cart-empty">
         <div class="empty-icon">🍇</div>
@@ -142,7 +593,6 @@
         <span>Adicione itens do cardápio!</span>
       </div>
     </div>
-
     <div class="cart-footer" id="cartFooter" style="display:none">
       <div class="cart-total">
         <span>Total</span>
@@ -156,7 +606,7 @@
     </div>
   </aside>
 
-  <!-- FLOATING WHATSAPP BUTTON -->
+  <!-- FLOATING WHATSAPP -->
   <a class="fab-whatsapp" href="https://wa.me/5599984158874" target="_blank" aria-label="Falar no WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.522 5.847L.057 23.492a.5.5 0 0 0 .599.61l5.812-1.524A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.817 9.817 0 0 1-5.028-1.384l-.36-.214-3.732.978.996-3.645-.234-.374A9.817 9.817 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
     <span class="fab-pulse"></span>
@@ -164,5 +614,168 @@
 
   <script src="/js/data.js"></script>
   <script src="/js/app.js"></script>
+  <script>
+  // =============================================
+  // PROMOÇÕES — lógica adicional
+  // =============================================
+
+  const PROMO_TERCA = [
+    { id: "promo-carne-queijo",  name: "Pastel Carne c/ Queijo (30cm)",  emoji: "🥟", price: 17 },
+    { id: "promo-frango-queijo", name: "Pastel Frango c/ Queijo (30cm)", emoji: "🥟", price: 17 },
+  ];
+
+  const PROMO_QUINTA = [
+    { id: "quinta-crepe",         name: "Crepe no Palito",       emoji: "🫓", price: 5  },
+    { id: "quinta-caldo-500",     name: "Caldo 500ml",           emoji: "🍲", price: 15 },
+    { id: "quinta-caldo-350",     name: "Caldo 350ml",           emoji: "🍲", price: 10 },
+    { id: "quinta-batata-media",  name: "Batata Frita Média",    emoji: "🍟", price: 12 },
+    { id: "quinta-batata-grande", name: "Batata Frita Grande",   emoji: "🍟", price: 15 },
+  ];
+
+  // Carrinho de promoções usa o mesmo cart do app.js
+  function renderPromoItems(containerId, items, dayPrefix) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = items.map(p => {
+      const itemId = p.id.startsWith(dayPrefix) ? p.id : `${dayPrefix}-${p.id}`;
+      const inCart = cart.find(i => i.id === itemId);
+      const qty = inCart ? inCart.qty : 0;
+      const priceLabel = p.price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+      return `
+        <div class="promo-item-row" id="promo-row-${itemId}">
+          <div class="promo-item-info">
+            <span class="promo-item-emoji">${p.emoji}</span>
+            <div>
+              <div class="promo-item-name">${p.name}</div>
+              <div style="font-size:0.75rem;color:#F7B731;font-weight:700">${priceLabel}</div>
+            </div>
+          </div>
+          <div class="promo-item-controls">
+            <div class="promo-qty-control" id="promo-qty-ctrl-${itemId}" style="${qty > 0 ? '' : 'display:none'}">
+              <button class="promo-qty-btn minus" data-promo-id="${itemId}">−</button>
+              <span class="promo-qty-num" id="promo-qnum-${itemId}">${qty}</span>
+              <button class="promo-qty-btn plus" data-promo-id="${itemId}">+</button>
+            </div>
+            <button class="promo-btn-add ${qty > 0 ? 'hidden' : ''}" 
+                    data-promo-id="${itemId}" 
+                    data-name="${p.name} (Promo)" 
+                    data-price="${p.price}">
+              + Adicionar
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function addPromoToCart(id, name, price) {
+    const existing = cart.find(i => i.id === id);
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ id, name, price: parseFloat(price), qty: 1 });
+    }
+    saveCart();
+    updatePromoItemUI(id);
+    updateCartUI();
+    animateCartBtn();
+  }
+
+  function changePromoQty(id, delta) {
+    const idx = cart.findIndex(i => i.id === id);
+    if (idx === -1) return;
+    cart[idx].qty += delta;
+    if (cart[idx].qty <= 0) cart.splice(idx, 1);
+    saveCart();
+    updatePromoItemUI(id);
+    updateCartUI();
+    animateCartBtn();
+  }
+
+  function updatePromoItemUI(id) {
+    const inCart = cart.find(i => i.id === id);
+    const qty = inCart ? inCart.qty : 0;
+    const ctrl = document.getElementById(`promo-qty-ctrl-${id}`);
+    const btn  = document.querySelector(`[data-promo-id="${id}"].promo-btn-add`);
+    const qnum = document.getElementById(`promo-qnum-${id}`);
+    if (qnum) qnum.textContent = qty;
+    if (qty > 0) {
+      ctrl && (ctrl.style.display = '');
+      btn && btn.classList.add('hidden');
+    } else {
+      ctrl && (ctrl.style.display = 'none');
+      btn && btn.classList.remove('hidden');
+    }
+  }
+
+  // Highlight today's promo
+  function highlightTodayPromo() {
+    // 0=Sun,1=Mon,2=Tue,3=Wed,4=Thu,5=Fri,6=Sat
+    const day = new Date().getDay();
+    const map = { 1: 'segunda', 2: 'terca', 3: 'quarta', 4: 'quinta', 5: 'sexta' };
+    const todayKey = map[day];
+    if (todayKey) {
+      const card = document.getElementById(`promo-${todayKey}`);
+      if (card) {
+        card.classList.add('today-promo');
+        const lbl = document.createElement('div');
+        lbl.className = 'today-label';
+        lbl.textContent = '✨ Hoje!';
+        card.appendChild(lbl);
+      }
+    }
+  }
+
+  // Category filter — extended for promoções
+  const _origFilterCategory = filterCategory;
+  filterCategory = function(cat) {
+    const promoSection = document.getElementById('promo-section');
+    const menuSection  = document.getElementById('menu');
+
+    if (cat === 'promocoes') {
+      promoSection.classList.add('active');
+      menuSection.style.display = 'none';
+      document.querySelectorAll('.cat-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.cat === 'promocoes');
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      promoSection.classList.remove('active');
+      menuSection.style.display = '';
+      _origFilterCategory(cat);
+    }
+  };
+
+  // Delegate promo button events
+  document.addEventListener('click', function(e) {
+    const addBtn = e.target.closest('.promo-btn-add');
+    if (addBtn) {
+      const id    = addBtn.dataset.promoId;
+      const name  = addBtn.dataset.name;
+      const price = addBtn.dataset.price;
+      addPromoToCart(id, name, price);
+      return;
+    }
+    const promoQty = e.target.closest('.promo-qty-btn');
+    if (promoQty) {
+      const id    = promoQty.dataset.promoId;
+      const delta = promoQty.classList.contains('plus') ? 1 : -1;
+      changePromoQty(id, delta);
+      return;
+    }
+  }, true); // capture phase so it runs before app.js
+
+  // Init promos
+  renderPromoItems('promo-terca-items',  PROMO_TERCA,  'terca');
+  renderPromoItems('promo-quinta-items', PROMO_QUINTA, 'quinta');
+  highlightTodayPromo();
+
+  // Restore promo qty on load
+  cart.forEach(item => {
+    if (item.id.startsWith('terca-') || item.id.startsWith('quinta-')) {
+      updatePromoItemUI(item.id);
+    }
+  });
+  </script>
 </body>
 </html>
