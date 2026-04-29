@@ -151,7 +151,7 @@ body {
 
 .cat-btn {
   white-space: nowrap;
-  background: rgba(255,255,255,0.12);
+  background: var(--purple);
   border: 1.5px solid rgba(255,255,255,0.15);
   border-radius: 20px;
   padding: 6px 14px;
